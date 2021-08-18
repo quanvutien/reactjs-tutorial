@@ -1,16 +1,20 @@
 pipeline {
-     agent any
-     stages {
+    agent any
+
+    tools {nodejs "node"}
+
+    stages {
         stage("Build") {
             steps {
-                sh "sudo npm install"
-                sh "sudo npm run build"
+                sh "cp .env.example .env"
+                sh "npm install"
+                sh "npm run build"
             }
         }
         stage("Deploy") {
             steps {
-                sh "sudo rm -rf /var/www/reactjs-tutorial"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/reactjs-tutorial/"
+                sh "rm -rf /var/www/reactjs-tutorial"
+                sh "cp -r ${WORKSPACE}/build/ /var/www/reactjs-tutorial/html/"
             }
         }
     }
