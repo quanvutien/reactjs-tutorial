@@ -7,9 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Created by {process.env.REACT_APP_AUTHOR}
-        </p>
+        <p>Created by {process.env.REACT_APP_AUTHOR}</p>
       </header>
     </div>
   );
