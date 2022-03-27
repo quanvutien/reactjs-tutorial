@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Blob } from 'blob-polyfill';
 import logo from './logo.svg';
 import './App.css';
 
