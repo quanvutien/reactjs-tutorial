@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Blob } from 'blob-polyfill';
+import FileSaver from 'file-saver';
 import logo from './logo.svg';
 import './App.css';
 
@@ -14,20 +14,11 @@ function App() {
         },
       )
       .then((response) => {
-        // Create blob link to download
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `3daea1dbf2b4c5cddd854377dfaf3ea7.jpg`);
-
-        // Append to html link element page
-        document.body.appendChild(link);
-
-        // Start download
-        link.click();
-
-        // Clean up and remove the link
-        document.body.removeChild(link);
+        // const splitType = response.data.type.split('/');
+        FileSaver.saveAs(new Blob([response.data], { type: 'image/jpeg' }), `3daea1dbf2b4c5cddd854377dfaf3ea7.jpg`);
+      })
+      .catch((err) => {
+        console.log('err', err);
       });
   };
   return (
