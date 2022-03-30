@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import FileSaver from 'file-saver';
+// import FileSaver from 'file-saver';
+import downloadjs from 'downloadjs';
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,7 +16,8 @@ function App() {
       )
       .then((response) => {
         // const splitType = response.data.type.split('/');
-        FileSaver.saveAs(new Blob([response.data], { type: 'image/jpeg' }), `3daea1dbf2b4c5cddd854377dfaf3ea7.jpg`);
+        downloadjs(new Blob([response.data]), '3daea1dbf2b4c5cddd854377dfaf3ea7.jpg', 'image/jpeg');
+        // FileSaver.saveAs(new Blob([response.data], { type: 'image/jpeg' }), `3daea1dbf2b4c5cddd854377dfaf3ea7.jpg`);
       })
       .catch((err) => {
         console.log('err', err);
